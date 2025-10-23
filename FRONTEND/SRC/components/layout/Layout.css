@@ -1,0 +1,107 @@
+.layout-container {
+  position: relative;
+  background-image: url('../../assets/background.jpg'); /* Adjust path if needed */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 0px 100px;
+  min-height: 100vh;
+  color: #ffff; /* Light text for dark background */
+  overflow: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Optional overlay for better readability */
+.layout-container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #14112E; /* Dark overlay */
+  z-index: 0;
+}
+
+/* Header styling */
+.layout-header {
+  display: flex;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: #14112E;
+  position: relative;
+  z-index: 1;
+}
+
+/* Logo styling */
+.layout-logo {
+  height: 200px; /* Increased from 60px */
+  width: 200px;  /* Add width for consistency */
+  margin-right: 20px;
+  border-radius: 60%; /* Optional: keeps it circular */
+}
+
+/* Title group for multi-line heading */
+.layout-title-group {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+/* Each line of the heading */
+.layout-title-line {
+  font-size: 28px;
+  font-weight: bold;
+  color: #ffffff;
+  margin: 0;
+}
+
+/* Highlighted word inside heading */
+.highlight {
+  color: #00bfff; /* Bright blue for "Assistant" */
+}
+
+/* Main content area */
+.layout-content {
+  padding: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+/* 🔼 Top-right navigation buttons */
+.layout-top-buttons {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  display: flex;
+  gap: 20px;
+  font-size: 1.6rem;
+  z-index: 1000;
+}
+
+.layout-icon {
+  cursor: pointer;
+  color: #ffffff;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.layout-icon:hover {
+  transform: scale(1.1);
+  color: #00bfff; /* Optional hover color */
+}
+
+/* 🔙 Top-left back button */
+.layout-back-button {
+  position: absolute;
+  top: 20px;
+  left: 40px;
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  color: #ffffff;
+  cursor: pointer;
+  z-index: 1000;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.layout-back-button:hover {
+  transform: scale(1.1);
+  color: #00bfff;
+}

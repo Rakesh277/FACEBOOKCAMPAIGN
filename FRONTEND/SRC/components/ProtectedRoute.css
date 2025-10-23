@@ -1,0 +1,16 @@
+.error-banner {
+  background-color: #ffe4e6;
+  color: #b91c1c;
+  padding: 12px;
+  margin: 16px;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.auth-loading {
+  text-align: center;
+  padding: 40px;
+  font-size: 1.2rem;
+  color: #555;
+}

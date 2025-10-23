@@ -1,0 +1,14 @@
+.notificationPage {
+  padding: 2rem;
+  text-align: center;
+}
+
+.notificationTitle {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.notificationMessage {
+  font-size: 1rem;
+  color: #be981a;
+}

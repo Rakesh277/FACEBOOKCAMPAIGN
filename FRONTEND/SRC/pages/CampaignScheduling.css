@@ -1,0 +1,124 @@
+/* ===== Campaign Scheduling Page ===== */
+
+.campaign-scheduling-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  color: #fff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.campaign-scheduling-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  color: #14b8a6; /* teal-400 */
+  text-align: center;
+}
+
+/* ===== Form Styling ===== */
+.campaign-form {
+  background-color: #1f1f2e; /* dark gray/blue */
+  padding: 2rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  margin-bottom: 2rem;
+}
+
+.campaign-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.campaign-form input,
+.campaign-form select {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid #4b5563; /* gray border */
+  background-color: #2a2a40;
+  color: #fff;
+  outline: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.campaign-form input:focus,
+.campaign-form select:focus {
+  border-color: #14b8a6; /* teal */
+  box-shadow: 0 0 0 2px rgba(20, 184, 166, 0.3);
+}
+
+.campaign-form button {
+  background-color: #14b8a6;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+  border: none;
+  cursor: pointer;
+}
+
+.campaign-form button:hover {
+  background-color: #0d9488;
+}
+
+/* ===== Scheduled Campaign Table ===== */
+.scheduled-campaigns {
+  background-color: #1f1f2e;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.scheduled-campaigns h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #14b8a6;
+}
+
+.scheduled-campaigns table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #2a2a40;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.scheduled-campaigns th,
+.scheduled-campaigns td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+}
+
+.scheduled-campaigns th {
+  background-color: #1e293b;
+  color: #14b8a6;
+}
+
+.scheduled-campaigns td {
+  color: #e5e7eb; /* gray-200 */
+  border-bottom: 1px solid #4b5563;
+}
+
+.scheduled-campaigns tr:hover {
+  background-color: #3b3b5c;
+}
+
+.scheduled-campaigns .status {
+  color: #34d399; /* green-400 */
+  font-weight: 600;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .campaign-form .grid-cols-2 {
+    grid-template-columns: 1fr;
+  }
+  .campaign-scheduling-title {
+    font-size: 2rem;
+  }
+}

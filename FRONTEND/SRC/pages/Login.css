@@ -1,0 +1,88 @@
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* full center */
+  background-color: #14112E;
+}
+
+.login-form {
+  width: 100%;
+  max-width: 400px;
+  background-color: rgba(20, 17, 46, 0.95);
+  padding: 28px;
+  border-radius: 12px;
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  color: #fff;
+}
+
+.login-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+/* Make button same width & size as input fields */
+button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* Error message styling */
+.error-message {
+  color: rgb(255, 255, 255);
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* Register link color changed to white */
+.register-link {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 14px;
+  color: white;
+}
+
+.register-link a {
+  color: white;
+  text-decoration: underline;
+}
+
+.register-link a:hover {
+  color: #007bff; /* blue on hover */
+}

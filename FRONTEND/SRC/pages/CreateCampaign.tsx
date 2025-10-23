@@ -1,0 +1,225 @@
+import React, { useState } from "react";
+import Layout from "@components/layout/Layout";
+import axios from "axios";
+import "./CreateCampaign.css";
+
+const CreateCampaign: React.FC = () => {
+  const [formData, setFormData] = useState({
+    campaignName: "",
+    pageName: "",
+    objective: "",
+    adType: "",
+    caption: "",
+    budget: "",
+    duration: "",
+  });
+
+  const [error, setError] = useState<string | null>(null);
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  // You can adjust this endpoint as per your backend, e.g., /api/campaign/create for campaign meta, or /api/facebook/publish for post
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // Basic form validation
+    if (!formData.campaignName || !formData.pageName || !formData.objective || !formData.caption) {
+      setError("Please fill all required fields.");
+      return;
+    }
+    setError(null);
+
+    try {
+      // Replace with your backend API for campaigns (use /api/facebook/publish for direct post)
+      await axios.post("http://localhost:5000/api/facebook/publish", {
+        message: formData.caption // or a campaign object with all data, as per your backend
+      });
+
+      alert("Campaign created successfully!");
+      setFormData({
+        campaignName: "",
+        pageName: "",
+        objective: "",
+        adType: "",
+        caption: "",
+        budget: "",
+        duration: "",
+      });
+    } catch (err: any) {
+      setError("Failed to create campaign. Please try again.");
+    }
+  };
+
+  return (
+    <div>
+      <div className="create-campaign-card">
+        <h2 className="section-title">Create Campaign</h2>
+
+        <form onSubmit={handleSubmit} className="create-campaign-form">
+          {error && <div className="form-error">{error}</div>}
+          {/* Campaign Name */}
+          <div className="form-group">
+            <label htmlFor="campaignName">Campaign Name</label>
+            <input
+              id="campaignName"
+              name="campaignName"
+              type="text"
+              value={formData.campaignName}
+              onChange={handleChange}
+              placeholder="Enter campaign name"
+              required
+              className="create-campaign-input"
+            />
+          </div>
+
+          {/* Page Name */}
+          <div className="form-group">
+            <label htmlFor="pageName">Company / Page Name</label>
+            <input
+              id="pageName"
+              name="pageName"
+              type="text"
+              value={formData.pageName}
+              onChange={handleChange}
+              placeholder="Enter page name"
+              required
+              className="create-campaign-input"
+            />
+          </div>
+
+          {/* Objective */}
+          <div className="form-group">
+            <label htmlFor="objective">Objective</label>
+            <select
+              id="objective"
+              name="objective"
+              value={formData.objective}
+              onChange={handleChange}
+              required
+              className="create-campaign-select"
+            >
+              <option value="">Select Objective</option>
+              <option value="awareness">Awareness</option>
+              <option value="engagement">Engagement</option>
+              <option value="leads">Leads</option>
+              <option value="traffic">Traffic</option>
+              <option value="sales">Sales</option>
+            </select>
+          </div>
+
+          {/* Caption */}
+          <div className="form-group">
+            <label htmlFor="caption">Description</label>
+            <textarea
+              id="caption"
+              name="caption"
+              value={formData.caption}
+              onChange={handleChange}
+              placeholder="Write ad description"
+              required
+              className="create-campaign-textarea"
+            />
+          </div>
+
+          {/* Target Audience */}
+          <h3 className="sub-title">Target Audience</h3>
+
+          <div className="form-group">
+            <label htmlFor="adType">Ad Type</label>
+            <select
+              id="adType"
+              name="adType"
+              value={formData.adType}
+              onChange={handleChange}
+              className="create-campaign-select"
+            >
+              <option value="">Select Ad Type</option>
+              <option value="single">Single Image</option>
+              <option value="carousel">Carousel</option>
+              <option value="video">Video</option>
+            </select>
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="postCopy">Post Copy / Caption</label>
+            <input
+              id="postCopy"
+              name="postCopy"
+              type="text"
+              placeholder="Auto generated by AI"
+              readOnly
+              className="create-campaign-input"
+            />
+          </div>
+
+          {/* Media Upload */}
+          <div className="form-group">
+            <label htmlFor="mediaUpload">Media Upload</label>
+            <input
+              id="mediaUpload"
+              name="mediaUpload"
+              type="text"
+              placeholder="# Auto selected by AI"
+              readOnly
+              className="create-campaign-input"
+            />
+          </div>
+
+          {/* Budget & Duration */}
+          <div className="form-row">
+            <div className="form-group form-row-item">
+              <label htmlFor="budget">Budget</label>
+              <input
+                id="budget"
+                name="budget"
+                type="number"
+                value={formData.budget}
+                onChange={handleChange}
+                placeholder=" "
+                className="create-campaign-input"
+              />
+            </div>
+
+            <div className="form-group form-row-item">
+              <label htmlFor="duration">Duration (Days)</label>
+              <input
+                id="duration"
+                name="duration"
+                type="number"
+                value={formData.duration}
+                onChange={handleChange}
+                placeholder=" "
+                className="create-campaign-input"
+              />
+            </div>
+          </div>
+
+          {/* AI Assistance Toggle */}
+          <div className="ai-assist">
+            <label htmlFor="aiAssistToggle" className="switch">
+              <input id="aiAssistToggle" type="checkbox" defaultChecked />
+              <span className="slider round"></span>
+            </label>
+            <label htmlFor="aiAssistToggle" className="ai-assist-text">
+              AI Assistance
+            </label>
+          </div>
+
+          {/* Submit Button */}
+          <div className="submit-container">
+            <button type="submit" className="create-campaign-submit">
+              Create Campaign
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+};
+
+export default CreateCampaign;

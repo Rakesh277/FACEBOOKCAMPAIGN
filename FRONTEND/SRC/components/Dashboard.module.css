@@ -1,0 +1,89 @@
+.container {
+  background-color: #02060f;
+  border: 2px solid #2e0404;
+  padding: 2rem;
+  border-radius: 12px;
+  color: rgb(209, 27, 27);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 600px;
+  margin: 2rem auto;
+  box-sizing: border-box;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logoSection {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 50px;
+  margin-right: 1rem;
+}
+
+.title {
+  font-size: 1.5rem;
+  line-height: 1.2;
+  font-weight: 600;
+  color: #d11b1b;
+}
+
+.assistant {
+  color: #4fd1c5;
+  font-weight: 600;
+}
+
+.nav a {
+  margin-left: 1rem;
+  color: white;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.nav a:hover {
+  color: #4fd1c5;
+}
+
+.main {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.dashboardHeading {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  color: #d11b1b;
+}
+
+.status {
+  background-color: #1a202c;
+  padding: 0.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.buttons button {
+  background-color: #2d3748;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  margin: 0.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.buttons button:hover {
+  background-color: #4fd1c5;
+  color: #02060f;
+}

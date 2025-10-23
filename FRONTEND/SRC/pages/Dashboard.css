@@ -1,0 +1,221 @@
+/* Container for the entire dashboard */
+.dashboard-container {
+  background-color: #14112E;
+  color: #ffffff;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding: 20px;
+}
+
+/* Header section */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0 10px 0;
+}
+
+/* Dashboard.module.css */
+.noDataMessage {
+  margin-top: 2rem;
+}
+/* Logo styling */
+.dashboard-logo {
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+/* Title group */
+.dashboard-title-group {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Title text */
+.dashboard-title-line {
+  font-size: 28px;
+  font-weight: bold;
+  margin: 0;
+  color: #ffffff;
+}
+
+.highlight {
+  color: #00bfff;
+}
+
+/* Top-right navigation */
+.dashboard-nav-right {
+  display: flex;
+  gap: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* Divider line below header */
+.dashboard-divider {
+  border: none;
+  height: 1px;
+  background-color: #2A2745;
+  margin: 0 0 20px 0;
+}
+
+/* Main content area */
+.dashboard-content {
+  padding: 20px 0 40px 0;
+}
+
+/* Section blocks (e.g., Create Campaign, Analytics) */
+.dashboard-section {
+  margin-bottom: 30px;
+  padding: 20px;
+  background-color: #1E1B3A;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Section headings */
+.dashboard-section h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+/* Buttons or links inside sections */
+.dashboard-section button,
+.dashboard-section a {
+  background-color: #00bfff;
+  color: #14112E;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dashboard-section button:hover,
+.dashboard-section a:hover {
+  background-color: #0099cc;
+}
+
+/* ✅ New grid layout for dashboard fields */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 20px;
+  justify-items: center;
+  align-items: center;
+  margin-top: 40px;
+}
+
+/* Individual field styling */
+.grid-item {
+  background-color: #1E1B3A;
+  color: #ffffff;
+  padding: 20px 30px;
+  border-radius: 160px;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  min-width: 900px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.grid-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Grid positioning */
+.grid-item:nth-child(2) {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.grid-item:nth-child(1) {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.grid-item:nth-child(3) {
+  grid-column: 1;
+  grid-row: 3;
+}
+
+.grid-item:nth-child(4) {
+  grid-column: 1;
+  grid-row: 4;
+}
+
+.grid-item:nth-child(5) {
+  grid-column: 1;
+  grid-row: 5;
+}
+
+/* Reuse similar card styles as CreateCampaign */
+.create-campaign-bg {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #18162b;
+}
+
+.create-campaign-card {
+  background: #18162b;
+  border-radius: 20px;
+  box-shadow: 0 2px 32px rgba(0, 0, 0, 0.26);
+  border: 1.5px solid rgba(255, 255, 255, 0.10);
+  padding: 38px 32px 28px 32px;
+  width: 100%;
+  max-width: 520px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin: 36px auto;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  cursor: pointer;
+}
+
+.grid-item {
+  -webkit-user-select: none; /* Safari and iOS */
+  user-select: none;
+  /* other properties */
+}
+
+.grid-item:hover {
+  background-color: #14b8a6;
+  color: #18162b;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #14b8a6;
+}
+
+/* Error message */
+.dashboard-error {
+  text-align: center;
+  color: #ef4444; /* red-500 */
+  font-weight: 600;
+  margin-top: -10px;
+  margin-bottom: 16px;
+}

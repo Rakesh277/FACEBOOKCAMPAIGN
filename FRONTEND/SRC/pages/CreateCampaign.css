@@ -1,0 +1,176 @@
+/* ====== Card Container for Form ====== */
+.create-campaign-card {
+  background: #18162b;
+  border-radius: 20px;
+  box-shadow: 0 2px 32px 0 rgba(0,0,0,0.26);
+  border: 1.5px solid rgba(255,255,255,0.10);
+  padding: 38px 32px 28px 32px;
+  width: 100%;
+  max-width: 4000px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin: 36px auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: box-shadow 0.3s, border-color 0.3s;
+}
+
+/* ====== Card Hover ====== */
+.create-campaign-card:hover {
+  border-color: rgba(37, 99, 235, 0.8);
+  box-shadow: 0 0 24px rgba(37,99,235,0.3);
+}
+
+/* ====== Section Titles ====== */
+.section-title {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 1.3rem;
+}
+
+/* ====== Sub-titles ====== */
+.sub-title {
+  text-align: left;
+  font-size: 1.15rem;
+  color: #a7b4ed;
+  font-weight: 500;
+  margin: 0.5rem 0 0.8rem 0;
+}
+
+/* ====== Form Layout ====== */
+.create-campaign-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ====== Labels ====== */
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 0.98rem;
+}
+
+/* ====== Input / Select / Textarea ====== */
+.create-campaign-input,
+.create-campaign-select,
+.create-campaign-textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  background-color: #fff;
+  border: 1px solid #cbd5e1;
+  color: #18162b;
+  font-size: 0.98rem;
+  outline: none;
+  box-sizing: border-box;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.create-campaign-input:focus,
+.create-campaign-select:focus,
+.create-campaign-textarea:focus {
+  box-shadow: 0 0 0 2px #2563eb;
+  border-color: #2563eb;
+}
+
+.create-campaign-textarea {
+  resize: none;
+  min-height: 100px;
+}
+
+/* ====== Buttons ====== */
+.submit-container {
+  margin-top: 18px;
+}
+
+.create-campaign-submit {
+  width: 100%;
+  padding: 12px 0;
+  background-color: #2563eb;
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.create-campaign-submit:hover {
+  background-color: #1e40af;
+  transform: translateY(-1px);
+}
+
+/* ====== AI Assist Toggle/Switch ====== */
+.ai-assist {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.switch input { 
+  display: none;
+}
+
+.switch .slider {
+  width: 40px;
+  height: 22px;
+  border-radius: 22px;
+  background: #4b4b7a;
+  display: inline-block;
+  position: relative;
+  transition: background 0.2s;
+}
+
+.switch .slider.round {
+  border-radius: 22px;
+}
+
+.switch input:checked + .slider {
+  background: #2563eb;
+}
+
+.switch .slider:before {
+  position: absolute;
+  content: '';
+  height: 18px;
+  width: 18px;
+  left: 2px;
+  bottom: 2px;
+  background-color: #fff;
+  border-radius: 50%;
+  transition: transform 0.2s;
+}
+
+.switch input:checked + .slider:before {
+  transform: translateX(18px);
+}
+
+.ai-assist-text {
+  color: #e6e6fa;
+  font-size: 0.95rem;
+}
+
+/* ====== Responsive ====== */
+@media (max-width: 520px) {
+  .create-campaign-card {
+    padding: 18px 8px;
+    max-width: 94vw;
+  }
+  .section-title { font-size: 1.25rem; }
+  .sub-title { font-size: 1rem; }
+}
+
+/* ====== Remove Old Container ====== */
+/* Delete or ignore create-campaign-container styles and only use .create-campaign-card in your JS/JSX */
+
+/* End of CSS */
