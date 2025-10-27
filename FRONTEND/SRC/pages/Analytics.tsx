@@ -1,119 +1,96 @@
-import React from "react";
-import Layout from "@components/layout/Layout";
-import {
-  BarChart,
-  Bar,
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-  Legend,
-} from "recharts";
+import React, { useEffect, useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import Layout from '@components/layout/Layout';
+import './Analytics.css'; // We will create a new CSS file for this component
 
-const Analytics: React.FC = () => {
-  // Sample data for charts
-  const campaignPerformance = [
-    { name: "Week 1", impressions: 4000, clicks: 240, conversions: 30 },
-    { name: "Week 2", impressions: 6000, clicks: 320, conversions: 42 },
-    { name: "Week 3", impressions: 7500, clicks: 410, conversions: 58 },
-    { name: "Week 4", impressions: 9000, clicks: 500, conversions: 72 },
-  ];
+// 1. Define an interface for the data we expect from the backend
+interface AnalyticsData {
+  reach: number;
+  engagement: number;
+  clicks: number;
+}
 
-  const audienceInsights = [
-    { name: "18-24", engagement: 65 },
-    { name: "25-34", engagement: 80 },
-    { name: "35-44", engagement: 55 },
-    { name: "45-54", engagement: 40 },
-  ];
+const AnalyticsPage: React.FC = () => {
+  // 2. Get the specific campaign ID from the URL (e.g., /analytics/12345)
+  const { campaignId } = useParams<{ campaignId: string }>();
+  
+  // 3. Set up state to manage the fetched data, loading status, and errors
+  const [analytics, setAnalytics] = useState<AnalyticsData | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
+
+  // 4. Use useEffect to fetch data when the component loads
+  useEffect(() => {
+    const fetchAnalytics = async () => {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        navigate('/login');
+        return;
+      }
+
+      try {
+        setLoading(true);
+        // Make the API call to the backend endpoint you created
+        const response = await axios.get(
+          `http://localhost:5000/api/analytics/${campaignId}`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
+        setAnalytics(response.data);
+        setError(null);
+      } catch (err: any) {
+        setError(err.response?.data?.message || 'Failed to load analytics data.');
+        console.error("Analytics fetch error:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (campaignId) {
+      fetchAnalytics();
+    }
+  }, [campaignId, navigate]);
 
   return (
+    
+      <div className="analytics-container">
+        <h1 className="section-title">Campaign Analytics</h1>
 
-      <div className="p-8 text-white max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold mb-8 text-teal-400">
-          Campaign Analytics
-        </h2>
+        {/* 5. Conditionally render content based on the state */}
+        {loading && <p className="loading-message">Loading analytics...</p>}
+        
+        {error && <p className="error-message">{error}</p>}
+        
+        {analytics && !loading && (
+          <div className="analytics-grid">
+            {/* Card for Reach */}
+            <div className="analytics-card">
+              <h3 className="card-title">Total Reach</h3>
+              <p className="card-value">{analytics.reach.toLocaleString()}</p>
+              <p className="card-description">The number of unique people who saw your post.</p>
+            </div>
 
-        {/* Campaign Performance Section */}
-        <div className="mb-10 bg-gray-900 p-6 rounded-2xl shadow-lg">
-          <h3 className="text-xl font-semibold mb-4">
-            Campaign Performance Overview
-          </h3>
-          <p className="text-gray-400 mb-4">
-            Track weekly impressions, clicks, and conversions.
-          </p>
+            {/* Card for Engagement */}
+            <div className="analytics-card">
+              <h3 className="card-title">Total Engagement</h3>
+              <p className="card-value">{analytics.engagement.toLocaleString()}</p>
+              <p className="card-description">The number of people who liked, commented, or shared.</p>
+            </div>
 
-          <ResponsiveContainer width="100%" height={300}>
-            <BarChart data={campaignPerformance}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#444" />
-              <XAxis dataKey="name" stroke="#ccc" />
-              <YAxis stroke="#ccc" />
-              <Tooltip
-                contentStyle={{
-                  backgroundColor: "#1f2937",
-                  border: "1px solid #374151",
-                }}
-              />
-              <Legend />
-              <Bar dataKey="impressions" fill="#14b8a6" />
-              <Bar dataKey="clicks" fill="#60a5fa" />
-              <Bar dataKey="conversions" fill="#f97316" />
-            </BarChart>
-          </ResponsiveContainer>
-        </div>
-
-        {/* Audience Insights Section */}
-        <div className="mb-10 bg-gray-900 p-6 rounded-2xl shadow-lg">
-          <h3 className="text-xl font-semibold mb-4">Audience Insights</h3>
-          <p className="text-gray-400 mb-4">
-            Understand engagement trends by age group.
-          </p>
-
-          <ResponsiveContainer width="100%" height={250}>
-            <LineChart data={audienceInsights}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#444" />
-              <XAxis dataKey="name" stroke="#ccc" />
-              <YAxis stroke="#ccc" />
-              <Tooltip
-                contentStyle={{
-                  backgroundColor: "#1f2937",
-                  border: "1px solid #374151",
-                }}
-              />
-              <Legend />
-              <Line
-                type="monotone"
-                dataKey="engagement"
-                stroke="#14b8a6"
-                strokeWidth={3}
-                dot={{ r: 6 }}
-              />
-            </LineChart>
-          </ResponsiveContainer>
-        </div>
-
-        {/* Optimization Suggestions */}
-        <div className="bg-gray-900 p-6 rounded-2xl shadow-lg">
-          <h3 className="text-xl font-semibold mb-4">💡 AI Recommendations</h3>
-          <ul className="list-disc pl-6 space-y-2 text-gray-300">
-            <li>
-              Boost engagement by scheduling more posts between 6–9 PM.
-            </li>
-            <li>
-              Your audience aged 25–34 shows highest interaction — increase
-              targeting in that range.
-            </li>
-            <li>Try using carousel ads — they’ve shown 12% higher CTR.</li>
-            <li>
-              Optimize creatives weekly to reduce ad fatigue and increase ROI.
-            </li>
-          </ul>
-        </div>
+            {/* Card for Clicks */}
+            <div className="analytics-card">
+              <h3 className="card-title">Link Clicks</h3>
+              <p className="card-value">{analytics.clicks.toLocaleString()}</p>
+              <p className="card-description">The number of clicks on links within your post.</p>
+            </div>
+          </div>
+        )}
       </div>
-   
+    
   );
 };
 
-export default Analytics;
+export default AnalyticsPage;

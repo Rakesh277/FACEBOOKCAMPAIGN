@@ -110,7 +110,7 @@
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, auto);
   gap: 20px;
-  justify-items: center;
+  justify-items: left;
   align-items: center;
   margin-top: 40px;
 }
@@ -124,9 +124,10 @@
   font-size: 16px;
   font-weight: 600;
   text-align: center;
+  grid-align:padding-left;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   cursor: pointer;
-  min-width: 900px;
+  min-width: 200px;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 

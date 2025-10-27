@@ -1,0 +1,155 @@
+/* General container for the entire campaign list page */
+.campaign-list-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #111827; /* Dark background */
+  border-radius: 8px;
+}
+
+/* Title for the section */
+.section-title {
+  color: #ffffff;
+  font-size: 1.875rem; /* 30px */
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #374151;
+  padding-bottom: 1rem;
+}
+
+/* Styles for the table wrapper to allow scrolling on small screens */
+.campaign-table-wrapper {
+  overflow-x: auto;
+}
+
+/* Main table styling */
+table {
+  width: 100%;
+  border-collapse: collapse; /* Removes space between cells */
+  color: #d1d5db; /* Light gray text */
+  font-size: 0.875rem; /* 14px */
+}
+
+/* Table header styles */
+thead th {
+  background-color: #1f2937; /* Darker header background */
+  color: #6ee7b7; /* Teal color for header text */
+  text-align: left;
+  padding: 12px 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Table body row styles */
+tbody tr {
+  border-bottom: 1px solid #374151; /* Separator line */
+  transition: background-color 0.2s ease-in-out;
+}
+
+tbody tr:hover {
+  background-color: #1f2937; /* Slightly lighter on hover */
+}
+
+/* Table cell styles */
+tbody td {
+  padding: 16px;
+  vertical-align: middle;
+}
+
+/* Specific styling for the caption to prevent it from being too long */
+.caption-cell {
+  max-width: 350px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* General status badge styling */
+.status-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 9999px; /* Pill shape */
+  font-weight: 600;
+  font-size: 0.75rem; /* 12px */
+}
+
+/* Status-specific colors */
+.status-published {
+  background-color: rgba(16, 185, 129, 0.1); /* Green tint */
+  color: #34d399; /* Green text */
+}
+
+.status-scheduled {
+  background-color: rgba(251, 191, 36, 0.1); /* Yellow tint */
+  color: #f59e0b; /* Yellow text */
+}
+
+.status-failed {
+  background-color: rgba(239, 68, 68, 0.1); /* Red tint */
+  color: #ef4444; /* Red text */
+}
+
+/* "No Campaigns" message styling */
+.no-campaigns {
+  text-align: center;
+  padding: 3rem;
+  color: #9ca3af;
+}
+
+.create-first-campaign-btn {
+  margin-top: 1rem;
+  padding: 10px 20px;
+  background-color: #3b82f6; /* Blue */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.create-first-campaign-btn:hover {
+  background-color: #2563eb; /* Darker blue */
+}
+
+/* Error message styling */
+.error-message {
+  color: #ef4444; /* Red */
+  text-align: center;
+  padding: 2rem;
+  font-weight: 500;
+}
+
+/* General form row styles (reused from other components) */
+.form-row {
+display: flex;
+gap: 1rem;
+margin-bottom: 1.25rem;
+}
+
+.form-group {
+position: relative;
+flex: 1;
+}
+
+.create-campaign-input, .create-campaign-select {
+width: 100%;
+background-color: #1f2937;
+border: 1px solid #374151;
+color: #d1d5db;
+border-radius: 6px;
+padding: 10px;
+}
+
+.create-campaign-input.padded-left {
+padding-left: 36px; /* Space for the search icon */
+}
+
+.form-group .lucide-react {
+position: absolute;
+left: 12px;
+top: 50%;
+transform: translateY(-50%);
+color: #6b7280;
+}

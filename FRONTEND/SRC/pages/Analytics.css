@@ -1,0 +1,61 @@
+.analytics-container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 2rem;
+  color: #ffffff;
+}
+
+.section-title {
+  font-size: 1.875rem; /* 30px */
+  font-weight: bold;
+  color: #2dd4bf; /* Teal color */
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.loading-message, .error-message {
+  text-align: center;
+  font-size: 1.125rem; /* 18px */
+  padding: 3rem 0;
+  color: #9ca3af;
+}
+
+.error-message {
+  color: #ef4444; /* Red */
+  font-weight: 500;
+}
+
+.analytics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.analytics-card {
+  background-color: #1f2937; /* Dark gray */
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #374151;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.card-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #9ca3af;
+  margin-bottom: 0.5rem;
+}
+
+.card-value {
+  font-size: 2.25rem; /* 36px */
+  font-weight: bold;
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+.card-description {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-top: 0.75rem;
+}

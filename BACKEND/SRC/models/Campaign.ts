@@ -25,6 +25,13 @@ export interface ICampaign extends Document {
   posts: mongoose.Types.ObjectId[];
   analytics?: Record<string, unknown>;
 
+  // Fields for the scheduler
+  status: 'scheduled' | 'published' | 'failed';
+  user: mongoose.Types.ObjectId;
+
+  // --- NEW FIELD FOR ANALYTICS ---
+  facebookPostId?: string; // Will store the ID from Facebook (e.g., 'PAGEID_POSTID')
+
   createdAt: Date;
   updatedAt: Date;
 }
@@ -55,6 +62,24 @@ const CampaignSchema = new Schema<ICampaign>(
 
     posts: [{ type: Schema.Types.ObjectId, ref: 'Post' }],
     analytics: { type: Schema.Types.Mixed, default: {} },
+    
+    // Schema definitions for scheduler fields
+    status: { 
+      type: String, 
+      enum: ['scheduled', 'published', 'failed'], 
+      default: 'scheduled' 
+    },
+    user: { 
+      type: Schema.Types.ObjectId, 
+      ref: 'User', 
+      required: true 
+    },
+
+    // --- SCHEMA DEFINITION FOR NEW ANALYTICS FIELD ---
+    facebookPostId: { 
+      type: String, 
+      required: false 
+    },
   },
   { timestamps: true }
 );
