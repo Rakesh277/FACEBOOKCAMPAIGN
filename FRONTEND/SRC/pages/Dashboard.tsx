@@ -74,7 +74,7 @@ const Dashboard: React.FC = () => {
 
   return (
     <div >
-      <div className="create-campaign-card dashboard-card">
+      <div className="create-campaign">
         <h1 className="section-title">Dashboard</h1>
         {error && <p className="dashboard-error">{error}</p>}
         {notification && <p className="dashboard-notification">{notification}</p>}

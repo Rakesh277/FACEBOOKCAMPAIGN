@@ -2,14 +2,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh; /* full center */
-  background-color: #14112E;
+  min-height: 0; /* full center */
+  background-color: rgba(228, 203, 150, 0.95);
 }
 
 .login-form {
   width: 100%;
   max-width: 400px;
-  background-color: rgba(20, 17, 46, 0.95);
+  background-color: rgba(228, 203, 150, 0.95);
   padding: 28px;
   border-radius: 12px;
   box-shadow: 0 0 16px rgba(0, 0, 0, 0.5);

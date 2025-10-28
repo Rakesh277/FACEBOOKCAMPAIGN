@@ -3,8 +3,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height:20vh; /* Adjust if header height changes */
-  padding: 40px 20px;
+  min-height:0vh; /* Adjust if header height changes */
+  padding: 0px;
   box-sizing: border-box;
 }
 
@@ -12,13 +12,13 @@
 .formContainer {
   width: 100%;
   max-width: 400px;
-  background-color: rgba(20, 17, 46, 0.95); /* Slightly darker for depth */
+  background-color: rgba(228, 203, 150, 0.95); /* Slightly darker for depth */
   padding: 28px;
   border-radius: 12px;
   box-shadow: 0 0 16px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
   color: #fff;
   /* Optional: adds a subtle glass effect */
 }

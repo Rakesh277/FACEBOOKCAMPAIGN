@@ -19,14 +19,28 @@ const AudienceTargeting: React.FC = () => {
     setAudienceData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Audience Targeting Data:", audienceData);
-    alert("Audience targeting saved successfully!");
+    try {
+      const res = await fetch("http://localhost:5000/api/audience", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(audienceData),
+      });
+
+      if (res.ok) {
+        alert("Audience targeting saved successfully!");
+      } else {
+        alert("Failed to save audience data.");
+      }
+    } catch (error) {
+      console.error("Error saving audience data:", error);
+      alert("Error occurred while saving.");
+    }
   };
 
   return (
-    <div >
+    <div>
       <div className="create-campaign-card">
         <h2 className="section-title">Audience Targeting</h2>
         <form onSubmit={handleSubmit} className="create-campaign-form">

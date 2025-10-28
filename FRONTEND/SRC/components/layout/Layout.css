@@ -4,7 +4,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  padding: 0px 100px;
+  padding: 0px 0px;
   min-height: 100vh;
   color: #ffff; /* Light text for dark background */
   overflow: hidden;
@@ -16,7 +16,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: #14112E; /* Dark overlay */
+  background:#E4CB96; /* Dark overlay */
   z-index: 0;
 }
 
@@ -24,10 +24,11 @@
 .layout-header {
   display: flex;
   align-items: center;
-  padding: 20px 40px;
-  background-color: #14112E;
+  min-height: 0;
+  padding: 0;
+  background-color:#E4CB96;
   position: relative;
-  z-index: 1;
+  z-index: 0;
 }
 
 /* Logo styling */
