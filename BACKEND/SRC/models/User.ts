@@ -5,8 +5,7 @@ export interface IUser extends Document {
   email: string;
   password: string;
   
-  // --- NEW AND MODIFIED FIELDS ---
-  facebookId?: string; // Changed to optional, as a user might not have connected to FB yet.
+  // --- NEW AND MODIFIED FIELDS --- // Changed to optional, as a user might not have connected to FB yet.
   facebookAccessToken?: string; // New field to securely store the long-lived access token.
   
   phone?: string;
@@ -24,7 +23,7 @@ const UserSchema: Schema = new Schema(
     password: { type: String, required: true },
     
     // --- SCHEMA DEFINITIONS FOR NEW/MODIFIED FIELDS ---
-    facebookId: { type: String, required: false }, // No longer required on signup
+   // No longer required on signup
     facebookAccessToken: { type: String, required: false }, // This will be added after OAuth
     
     phone: { type: String, required: false },

@@ -4,9 +4,9 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  padding: 0px 0px;
+  padding: 20px 100px;
   min-height: 100vh;
-  color: #ffff; /* Light text for dark background */
+  color: #bf1389; /* Light text for dark background */
   overflow: hidden;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -16,7 +16,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background:#E4CB96; /* Dark overlay */
+  background: #e249c9; /* Dark overlay */
   z-index: 0;
 }
 
@@ -24,11 +24,10 @@
 .layout-header {
   display: flex;
   align-items: center;
-  min-height: 0;
-  padding: 0;
-  background-color:#E4CB96;
+  padding: 20px 40px;
+  background-color: #e249c9;
   position: relative;
-  z-index: 0;
+  z-index: 1;
 }
 
 /* Logo styling */
@@ -50,13 +49,13 @@
 .layout-title-line {
   font-size: 28px;
   font-weight: bold;
-  color: #ffffff;
+  color: #07065c;
   margin: 0;
 }
 
 /* Highlighted word inside heading */
 .highlight {
-  color: #00bfff; /* Bright blue for "Assistant" */
+  color: #07065c; /* Bright blue for "Assistant" */
 }
 
 /* Main content area */
@@ -79,13 +78,13 @@
 
 .layout-icon {
   cursor: pointer;
-  color: #ffffff;
+  color: #0e2a67;
   transition: transform 0.2s ease, color 0.2s ease;
 }
 
 .layout-icon:hover {
   transform: scale(1.1);
-  color: #00bfff; /* Optional hover color */
+  color: #0e2a67; /* Optional hover color */
 }
 
 /* 🔙 Top-left back button */
@@ -96,7 +95,7 @@
   background: none;
   border: none;
   font-size: 1.6rem;
-  color: #ffffff;
+  color: #101074;
   cursor: pointer;
   z-index: 1000;
   transition: transform 0.2s ease, color 0.2s ease;
@@ -104,5 +103,5 @@
 
 .layout-back-button:hover {
   transform: scale(1.1);
-  color: #00bfff;
+  color: #101074;
 }

@@ -1,12 +1,12 @@
 /* ====== Card Container for Form ====== */
 .create-campaign-card {
-  background: #18162b;
+  background-color: rgb(232, 97, 153) !important;
   border-radius: 20px;
-  box-shadow: 0 2px 32px 0 rgba(0,0,0,0.26);
+  box-shadow: 0 2px 32px 0 rgba(122, 13, 13, 0.26);
   border: 1.5px solid rgba(255,255,255,0.10);
   padding: 38px 32px 28px 32px;
   width: 100%;
-  max-width: 4000px;
+  max-width: 520px;
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -18,8 +18,8 @@
 
 /* ====== Card Hover ====== */
 .create-campaign-card:hover {
-  border-color: rgba(37, 99, 235, 0.8);
-  box-shadow: 0 0 24px rgba(37,99,235,0.3);
+  border-color: rgba(20, 25, 146, 0.8);
+  box-shadow: 0 0 24px rgba(15, 227, 79, 0.3);
 }
 
 /* ====== Section Titles ====== */
@@ -75,7 +75,7 @@
   border-radius: 6px;
   background-color: #fff;
   border: 1px solid #cbd5e1;
-  color: #18162b;
+  color: #2bffce;
   font-size: 0.98rem;
   outline: none;
   box-sizing: border-box;
@@ -98,8 +98,8 @@
 
 /* ====== Error Messages ====== */
 .form-error {
-  color: #ff6b6b;
-  font-size: 14px;
+  color: #43063a;
+  font-size: 16px;
   margin-top: 4px;
 }
 

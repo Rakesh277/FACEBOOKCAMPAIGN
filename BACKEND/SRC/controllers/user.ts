@@ -6,10 +6,10 @@ import jwt from "jsonwebtoken";
 // ✅ Register Controller
 export const registerUser = async (req: Request, res: Response) => {
   try {
-    const { name, email, facebookId, password, phone, age } = req.body;
-    console.log('[REGISTER] Incoming payload:', { name, email, facebookId, phone, age });
+    const { name, email, password, phone, age } = req.body;
+    console.log('[REGISTER] Incoming payload:', { name, email,  phone, age });
 
-    if (!name || !email || !facebookId || !password || !phone || !age) {
+    if (!name || !email ||  !password || !phone || !age) {
       console.warn('[REGISTER] Missing required fields');
       return res.status(400).json({ message: 'All fields are required' });
     }
@@ -26,7 +26,6 @@ export const registerUser = async (req: Request, res: Response) => {
     const user = new User({
       name,
       email,
-      facebookId,
       password: hashedPassword,
       phone,
       age,
@@ -73,8 +72,8 @@ export const loginUser = async (req: Request, res: Response) => {
     const token = jwt.sign(
       {
         userId: user._id,
+        // facebookId: user.facebookId,
         email: user.email,
-        facebookId: user.facebookId,
         role: user.role || 'user',
       },
       jwtSecret,
@@ -88,7 +87,6 @@ export const loginUser = async (req: Request, res: Response) => {
         id: user._id,
         name: user.name,
         email: user.email,
-        facebookId: user.facebookId,
         phone: user.phone,
         age: user.age,
         role: user.role || 'user',

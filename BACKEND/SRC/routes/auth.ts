@@ -15,9 +15,9 @@ const router = express.Router();
 // ✅ Registration Route
 router.post('/register', async (req, res) => {
   try {
-    const { name, email, facebookId, password } = req.body;
+    const { name, email, password } = req.body;
 
-    if (!name || !email || !facebookId || !password) {
+    if (!name || !email || !password) {
       return res.status(400).json({ success: false, message: 'All fields are required' });
     }
 
@@ -27,7 +27,7 @@ router.post('/register', async (req, res) => {
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
-    const newUser = new User({ name, email, facebookId, password: hashedPassword });
+    const newUser = new User({ name, email, password: hashedPassword });
     await newUser.save();
 
     console.log('📥 New user registered:', newUser.email);
@@ -41,18 +41,18 @@ router.post('/register', async (req, res) => {
 // ✅ Login Route
 router.post('/login', async (req, res) => {
   try {
-    const { email, facebookId, password } = req.body;
+    const { email, password } = req.body;
 
     // ✅ Debug log added here
-    console.log('🔐 Login attempt:', { email, facebookId });
+    console.log('🔐 Login attempt:', { email,  });
 
-    if (!email || !facebookId || !password) {
+    if (!email  || !password) {
       return res.status(400).json({ success: false, message: 'All fields are required' });
     }
 
-    const user = await User.findOne({ email, facebookId });
+    const user = await User.findOne({ email,});
     if (!user) {
-      return res.status(401).json({ success: false, message: 'User not found or Facebook ID mismatch' });
+      return res.status(401).json({ success: false,  });
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
@@ -66,7 +66,7 @@ router.post('/login', async (req, res) => {
     }
 
     const token = jwt.sign(
-      { id: user._id, email: user.email, facebookId: user.facebookId },
+      { id: user._id, email: user.email, },
       jwtSecret,
       { expiresIn: '1h' }
     );
@@ -78,7 +78,6 @@ router.post('/login', async (req, res) => {
         id: user._id,
         name: user.name,
         email: user.email,
-        facebookId: user.facebookId
       }
     });
   } catch (err) {

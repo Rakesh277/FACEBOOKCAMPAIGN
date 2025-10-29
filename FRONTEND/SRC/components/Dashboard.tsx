@@ -7,7 +7,6 @@ import './dashboard.css';
 
 interface User {
   email: string;
-  facebookId: string;
   role?: string;
 }
 

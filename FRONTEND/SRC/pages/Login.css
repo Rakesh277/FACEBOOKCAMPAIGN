@@ -1,22 +1,15 @@
-.login-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 0; /* full center */
-  background-color: rgba(228, 203, 150, 0.95);
-}
 
 .login-form {
   width: 100%;
-  max-width: 400px;
-  background-color: rgba(228, 203, 150, 0.95);
-  padding: 28px;
-  border-radius: 12px;
+  max-width: 300px;
+  background-color: rgba(143, 53, 185, 0.95);
+  padding: 30px;
+  border-radius: 15px;
   box-shadow: 0 0 16px rgba(0, 0, 0, 0.5);
   display: flex;
-  flex-direction: column;
-  gap: 16px;
-  color: #fff;
+  flex-direction: column ;
+  gap: 20px;
+  color: #ffffff;
 }
 
 .login-form h2 {
@@ -85,4 +78,56 @@ button[type="submit"]:hover {
 
 .register-link a:hover {
   color: #007bff; /* blue on hover */
+}
+.forgot-password {
+  text-align: right;
+  margin-top: 5px;
+}
+
+.forgot-password a {
+  color: #ffffff;
+  font-size: 13px;
+  text-decoration: underline;
+}
+
+.social-login {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.google-login,
+.facebook-login {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.google-login {
+  background-color: #db4437;
+  color: white;
+}
+
+.facebook-login {
+  background-color: #4267B2;
+  color: white;
+}
+/* Full page background and layout */
+.login-page {
+  height: 80vh;
+  background-color: #ff69b4; /* bright pink or any color you like */
+  display: flex;
+  justify-content: flex-end; /* pushes content to the right */
+  align-items: center;
+  padding-right: 20%; /* spacing from the right edge */
+}
+
+/* Wrapper to control form alignment */
+.login-form-wrapper {
+  max-width: 400px;
+  width: 100%;
 }

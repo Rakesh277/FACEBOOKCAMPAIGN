@@ -5,10 +5,10 @@ const router = express.Router();
 
 router.post('/', async (req, res) => {
   try {
-    const { email, facebookId, password, date } = req.body;
+    const { email,  password, date } = req.body;
     console.log('[REGISTER PAYLOAD]', req.body); // ✅ Confirm date is received
 
-    const newUser = new UserModel({ email, facebookId, password, date });
+    const newUser = new UserModel({ email,password, date });
     await newUser.save();
 
     res.status(201).json({ message: 'User registered successfully' });

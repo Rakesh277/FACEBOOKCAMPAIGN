@@ -11,16 +11,15 @@ interface JwtPayload {
 
 export const login = async (req: Request, res: Response): Promise<Response> => {
   try {
-    let { email, facebookId, password } = req.body;
+    let { email,  password } = req.body;
 
     // ✅ Normalize inputs
     email = typeof email === 'string' ? email.trim().toLowerCase() : '';
-    facebookId = typeof facebookId === 'string' ? facebookId.trim().toLowerCase() : '';
     password = typeof password === 'string' ? password.trim() : '';
 
-    if (!email || !facebookId || !password) {
-      console.warn('⚠️ Missing required fields:', { email, facebookId, password });
-      return res.status(400).json({ message: 'Email, Facebook ID, and password are required' });
+    if (!email || !password) {
+      console.warn('⚠️ Missing required fields:', { email,  password });
+      return res.status(400).json({ message: 'Email, and password are required' });
     }
 
     // ✅ Find user by email
@@ -31,16 +30,6 @@ export const login = async (req: Request, res: Response): Promise<Response> => {
     if (!user) {
       console.warn(`⚠️ No user found for ${email}`);
       return res.status(404).json({ message: 'User not found' });
-    }
-
-    // ✅ Normalize stored facebookId for comparison
-    const storedFacebookId = typeof user.facebookId === 'string'
-      ? user.facebookId.trim().toLowerCase()
-      : '';
-
-    if (storedFacebookId !== facebookId) {
-      console.warn(`⚠️ Facebook ID mismatch for ${email}`);
-      return res.status(401).json({ message: 'Facebook ID mismatch' });
     }
 
     // ✅ Compare password
@@ -77,7 +66,6 @@ export const login = async (req: Request, res: Response): Promise<Response> => {
         id: user._id,
         name: user.name,
         email: user.email,
-        facebookId: user.facebookId ?? null,
         role: user.role ?? 'user',
       },
     });

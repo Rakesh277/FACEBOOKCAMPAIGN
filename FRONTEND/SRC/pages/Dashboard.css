@@ -1,12 +1,12 @@
 /* Container for the entire dashboard */
 .dashboard-container {
-  background-color: #14112E;
+  background-color: #E4CB96;
   color: #ffffff;
-  min-height: 100vh;
+  min-height: 20vh;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   padding-left: 40px;
   padding-right: 40px;
-  padding: 20px;
+  padding: 10px;
 }
 
 /* Header section */
@@ -74,7 +74,7 @@
 .dashboard-section {
   margin-bottom: 30px;
   padding: 20px;
-  background-color: #1E1B3A;
+  background-color: #E4CB96;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
@@ -90,7 +90,7 @@
 .dashboard-section button,
 .dashboard-section a {
   background-color: #00bfff;
-  color: #14112E;
+  color: #E4CB96;
   padding: 10px 16px;
   border: none;
   border-radius: 4px;
@@ -215,7 +215,7 @@
 /* Error message */
 .dashboard-error {
   text-align: center;
-  color: #ef4444; /* red-500 */
+  color: #ffffff; /* red-500 */
   font-weight: 600;
   margin-top: -10px;
   margin-bottom: 16px;

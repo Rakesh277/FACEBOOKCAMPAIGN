@@ -6,7 +6,6 @@ import Layout from '../components/layout/Layout';
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState('');
-  const [facebookId, setFacebookId] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -20,7 +19,7 @@ const Login: React.FC = () => {
     try {
       const response = await login({
         email: email.trim(),
-        facebookId: facebookId.trim(),
+
         password: password.trim(),
       });
 
@@ -53,55 +52,54 @@ const Login: React.FC = () => {
 
   return (
     <Layout>
-      <div className="login-wrapper">
-        <form className="login-form" onSubmit={handleLogin}>
-          <h2>Login</h2>
+  <div className="login-page">
+    <div className="login-wrapper">
+      <form className="login-form" onSubmit={handleLogin}>
+        <h2>Login</h2>
 
-          <div className="form-group">
-            <label htmlFor="email">Email</label>
-            <input
-              id="email"
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
+        <div className="form-group">
+          <label htmlFor="email">Email</label>
+          <input
+            id="email"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="password">Password</label>
+          <input
+            id="password"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          <div className="forgot-password">
+            <a href="/forgot-password">Forgot password?</a>
           </div>
+        </div>
 
-          <div className="form-group">
-            <label htmlFor="facebookId">Facebook ID</label>
-            <input
-              id="facebookId"
-              type="text"
-              value={facebookId}
-              onChange={(e) => setFacebookId(e.target.value)}
-              required
-            />
-          </div>
+        <button type="submit" disabled={loading}>
+          {loading ? 'Logging in...' : 'Login'}
+        </button>
 
-          <div className="form-group">
-            <label htmlFor="password">Password</label>
-            <input
-              id="password"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </div>
+        {error && <p className="error-message">{error}</p>}
 
-          <button type="submit" disabled={loading}>
-            {loading ? 'Logging in...' : 'Login'}
-          </button>
+        <p className="register-link">
+          Don't have an account? <a href="/register">Register here</a>
+        </p>
 
-          {error && <p className="error-message">{error}</p>}
-
-          <p className="register-link">
-            Don't have an account? <a href="/register">Register here</a>
-          </p>
-        </form>
-      </div>
-    </Layout>
+        <div className="social-login">
+          <button type="button" className="google-login">Continue with Google</button>
+          <button type="button" className="facebook-login">Continue with Facebook</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</Layout>
   );
 };
 

@@ -6,7 +6,6 @@ import { login } from '../api/auth';
 
 const LoginForm: React.FC = () => {
   const [email, setEmail] = useState('');
-  const [facebookId, setFacebookId] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -22,7 +21,6 @@ const LoginForm: React.FC = () => {
         'http://localhost:5000/api/auth/login',
         {
           email: email.trim().toLowerCase(),
-          facebookId: facebookId.trim(),
           password: password.trim(),
         },
         {
@@ -63,16 +61,7 @@ const LoginForm: React.FC = () => {
           />
         </div>
 
-        <div className="form-group">
-          <label htmlFor="facebookId">Facebook ID</label>
-          <input
-            id="facebookId"
-            type="text"
-            value={facebookId}
-            onChange={(e) => setFacebookId(e.target.value)}
-            required
-          />
-        </div>
+       
 
         <div className="form-group">
           <label htmlFor="password">Password</label>

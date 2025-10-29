@@ -8,7 +8,6 @@ import jwt from 'jsonwebtoken';
 interface JwtPayload {
   userId: string;
   email: string;
-  facebookId: string;
   role?: string;
 }
 

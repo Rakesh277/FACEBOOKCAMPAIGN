@@ -190,7 +190,7 @@ const CreateCampaign: React.FC = () => {
 
   return (
     <div>
-      <div className="create-campaign">
+      <div className="create-campaign-card">
         <h2 className="section-title">Create Campaign</h2>
         <form onSubmit={handleSubmit} className="create-campaign-form">
           {error && <div className="form-error">{error}</div>}

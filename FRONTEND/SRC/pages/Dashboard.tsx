@@ -8,7 +8,6 @@ import './dashboard.css';
 // Updated User interface to include the new optional fields
 interface User {
   email: string;
-  facebookId?: string;
   facebookAccessToken?: string; // This is the key field we need
   role?: string;
 }

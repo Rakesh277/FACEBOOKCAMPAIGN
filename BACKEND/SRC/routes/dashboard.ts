@@ -19,7 +19,6 @@ router.get('/', verifyToken, (req: AuthenticatedRequest, res) => {
     user: {
       userId: req.user.userId,
       email: req.user.email,
-      facebookId: req.user.facebookId,
       role: req.user.role || 'user',
     },
   });

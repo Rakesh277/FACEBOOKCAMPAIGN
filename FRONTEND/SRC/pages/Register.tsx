@@ -8,7 +8,6 @@ export default function Register() {
   const [form, setForm] = useState({
     name: '',
     email: '',
-    facebookId: '',
     password: '',
     phone: '',
   });
@@ -18,8 +17,8 @@ export default function Register() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const { name, email, facebookId, password, phone } = form;
-    if (!name || !email || !facebookId || !password || !phone) {
+    const { name, email, password, phone } = form;
+    if (!name || !email || !password || !phone) {
       alert('All fields are required');
       return;
     }
@@ -44,7 +43,6 @@ export default function Register() {
     setForm({
       name: '',
       email: '',
-      facebookId: '',
       password: '',
       phone: '',
     });
@@ -71,14 +69,6 @@ export default function Register() {
             placeholder="Enter your email"
             value={form.email}
             onChange={e => setForm({ ...form, email: e.target.value })}
-          />
-
-          <label htmlFor="facebookId">Facebook ID</label>
-          <input
-            id="facebookId"
-            placeholder="Enter your Facebook ID"
-            value={form.facebookId}
-            onChange={e => setForm({ ...form, facebookId: e.target.value })}
           />
 
           <label htmlFor="password">Password</label>

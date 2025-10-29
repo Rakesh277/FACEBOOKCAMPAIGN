@@ -9,14 +9,12 @@ axios.defaults.withCredentials = true; // Ensures cookies/session are sent
 export interface AuthPayload {
   email: string;
   password: string;
-  facebookId?: string;
 }
 
 export interface AuthResponse {
   token: string;
   user?: {
     email: string;
-    facebookId?: string;
     // Add more fields as needed
   };
 }
