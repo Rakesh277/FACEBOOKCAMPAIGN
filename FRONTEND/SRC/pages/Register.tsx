@@ -9,16 +9,16 @@ export default function Register() {
     name: '',
     email: '',
     password: '',
-    phone: '',
+    confirmpassword:'',
   });
-
+  const [confirmPassword, setConfirmPassword] = useState('');
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const { name, email, password, phone } = form;
-    if (!name || !email || !password || !phone) {
+    const { name, email, password, confirmpassword } = form;
+    if (!name || !email || !password || confirmpassword ) {
       alert('All fields are required');
       return;
     }
@@ -44,8 +44,11 @@ export default function Register() {
       name: '',
       email: '',
       password: '',
-      phone: '',
+      confirmpassword:'',
     });
+  };
+  const handleGoogleSignup = () => {
+    alert('Google Signup Clicked (Auth Later)');
   };
 
   return (
@@ -63,13 +66,16 @@ export default function Register() {
           />
 
           <label htmlFor="email">Email</label>
-          <input
-            id="email"
-            type="email"
-            placeholder="Enter your email"
-            value={form.email}
-            onChange={e => setForm({ ...form, email: e.target.value })}
-          />
+          
+        <input
+          id="email"
+          type="email"
+          value={form.email}
+          onChange={(e) => setForm({ ...form, email: e.target.value })}
+          required
+          placeholder="Enter a valid email address"
+/>
+
 
           <label htmlFor="password">Password</label>
           <input
@@ -79,22 +85,43 @@ export default function Register() {
             value={form.password}
             onChange={e => setForm({ ...form, password: e.target.value })}
           />
-
-          <label htmlFor="phone">Phone Number</label>
-          <input
-            id="phone"
-            type="tel"
-            placeholder="Enter your phone number"
-            value={form.phone}
-            onChange={e => setForm({ ...form, phone: e.target.value })}
-          />
-
+          <div className="form-group">
+  <label htmlFor="confirmPassword">Confirm Password</label>
+  <input
+    id="confirmPassword"
+    type="password"
+    name="confirmPassword"
+    placeholder="Re-enter your password"
+    value={confirmPassword}
+    onChange={(e) => setConfirmPassword(e.target.value)}
+    required
+  />
+</div>
           <div className={styles.buttonGroup}>
             <button type="submit" className={styles.submitBtn}>Submit</button>
             <button type="button" onClick={handleCancel} className={styles.cancelBtn}>Cancel</button>
           </div>
+        
+          <div className={styles.divider}>OR</div>
+          <button type="button" className={styles.googleBtn} onClick={handleGoogleSignup}>
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
+              alt="Sign Up with Google"
+            />
+          </button>
+          <p className={styles.loginLink}>
+            Already have an account? <a href="/login">Login</a>
+          </p>
         </form>
       </div>
-    </Layout>
+      </Layout>
+    
   );
 }
+
+
+
+
+
+
+

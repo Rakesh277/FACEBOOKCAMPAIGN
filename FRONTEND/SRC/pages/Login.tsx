@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { login } from '../api/auth'; // centralized API call
 import './Login.css';
-import Layout from '../components/layout/Layout';
+import logo from '@assets/logo1.png'; // Your logo file
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -51,55 +51,57 @@ const Login: React.FC = () => {
   };
 
   return (
-    <Layout>
-  <div className="login-page">
-    <div className="login-wrapper">
-      <form className="login-form" onSubmit={handleLogin}>
-        <h2>Login</h2>
-
-        <div className="form-group">
-          <label htmlFor="email">Email</label>
-          <input
-            id="email"
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
-          <input
-            id="password"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          <div className="forgot-password">
-            <a href="/forgot-password">Forgot password?</a>
+  
+    <div className="login-container">
+      <div className="left-section">
+      <img src={logo} alt="AI Campaign Logo" className="layout-logo" />
+        <div className="layout-title-group">
+            <h1 className="title-line">AI Facebook</h1>
+            <h1 className="title-line">
+              Campaign <span className="highlight">Assistant</span>
+            </h1>
           </div>
-        </div>
-
-        <button type="submit" disabled={loading}>
-          {loading ? 'Logging in...' : 'Login'}
-        </button>
-
-        {error && <p className="error-message">{error}</p>}
-
-        <p className="register-link">
-          Don't have an account? <a href="/register">Register here</a>
-        </p>
-
-        <div className="social-login">
-          <button type="button" className="google-login">Continue with Google</button>
-          <button type="button" className="facebook-login">Continue with Facebook</button>
-        </div>
-      </form>
+      </div>
+  
+      <div className="right-section">
+        <form className="login-card" onSubmit={handleLogin}>
+          <h2>Login</h2>
+  
+          <div className="form-group">
+            <label htmlFor="email">Email</label>
+            <input
+              id="email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+  
+          <div className="form-group">
+            <label htmlFor="password">Password</label>
+            <input
+              id="password"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+  
+          <button type="submit" disabled={loading}>
+            {loading ? 'Logging in...' : 'Login'}
+          </button>
+  
+          {error && <p className="error-message">{error}</p>}
+  
+          <p className="register-link">
+            Don't have an account? <a href="/register">Register here</a>
+          </p>
+        </form>
+      </div>
     </div>
-  </div>
-</Layout>
+
   );
 };
 

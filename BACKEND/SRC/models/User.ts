@@ -20,12 +20,14 @@ const UserSchema: Schema = new Schema(
   {
     name: { type: String, required: true },
     email: { type: String, required: true, unique: true },
+
+    // ✅ NEW FIELD: Email verification status
+    isVerified: { type: Boolean, default: false },
+
     password: { type: String, required: true },
-    
+
     // --- SCHEMA DEFINITIONS FOR NEW/MODIFIED FIELDS ---
-   // No longer required on signup
-    facebookAccessToken: { type: String, required: false }, // This will be added after OAuth
-    
+    facebookAccessToken: { type: String, required: false },
     phone: { type: String, required: false },
     age: { type: Number, required: false },
     role: { type: String, default: "user" },

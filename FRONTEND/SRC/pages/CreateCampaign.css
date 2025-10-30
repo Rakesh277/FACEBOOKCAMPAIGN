@@ -1,6 +1,6 @@
 /* ====== Card Container for Form ====== */
 .create-campaign-card {
-  background-color: rgb(232, 97, 153) !important;
+  background-color: rgb(69, 134, 219) !important;
   border-radius: 20px;
   box-shadow: 0 2px 32px 0 rgba(122, 13, 13, 0.26);
   border: 1.5px solid rgba(255,255,255,0.10);
@@ -19,7 +19,7 @@
 /* ====== Card Hover ====== */
 .create-campaign-card:hover {
   border-color: rgba(20, 25, 146, 0.8);
-  box-shadow: 0 0 24px rgba(15, 227, 79, 0.3);
+  box-shadow: 0 0 24px rgba(92, 82, 119, 0.3);
 }
 
 /* ====== Section Titles ====== */
@@ -124,7 +124,7 @@
 .next-button {
   width: 100%;
   padding: 12px 0;
-  background-color: #2563eb;
+  background-color: #031c54;
   color: white;
   font-weight: 600;
   border: none;
@@ -136,7 +136,7 @@
 
 .create-campaign-submit:hover,
 .next-button:hover {
-  background-color: #1e40af;
+  background-color: #00155c;
   transform: translateY(-1px);
 }
 
@@ -184,7 +184,7 @@
   width: 40px;
   height: 22px;
   border-radius: 22px;
-  background: #4b4b7a;
+  background: #5b7a4b;
   display: inline-block;
   position: relative;
   transition: background 0.2s;

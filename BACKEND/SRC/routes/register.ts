@@ -10,7 +10,11 @@ router.post('/', async (req, res) => {
 
     const newUser = new UserModel({ email,password, date });
     await newUser.save();
-
+    import { sendVerificationEmail } from '../utils/mailer';
+    import jwt from 'jsonwebtoken';
+    
+    const token = jwt.sign({ email: user.email }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    await sendVerificationEmail(user.email, token);
     res.status(201).json({ message: 'User registered successfully' });
   } catch (error) {
     console.error('[REGISTER ERROR]', error);

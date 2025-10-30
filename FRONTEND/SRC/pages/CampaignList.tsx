@@ -159,7 +159,12 @@ const CampaignList: React.FC = () => {
                     <td className="py-3 px-4 caption-cell">{campaign.caption}</td>
                     <td className="py-3 px-4 flex justify-center gap-2">
                       <button className="text-blue-400 hover:text-blue-500 text-sm font-semibold">View</button>
-                      <button className="text-yellow-400 hover:text-yellow-500 text-sm font-semibold">Edit</button>
+                     <button
+  className="text-yellow-400 hover:text-yellow-500 text-sm font-semibold"
+  onClick={() => navigate(`/edit-campaign/${campaign._id}`)}
+>
+  Edit
+</button>
                       <button className="text-red-400 hover:text-red-500 text-sm font-semibold">Delete</button>
                     </td>
                   </tr>

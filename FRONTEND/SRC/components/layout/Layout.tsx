@@ -40,9 +40,13 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     '/campaignlist',
     '/analytics',
     '/campaignscheduling',
-    '/notifications', // ✅ lowercase route
+    '/notifications',
   ];
   const showHeader = !excludedHeaderRoutes.includes(location.pathname);
+
+  // Remove header styling only on login page
+  const isLoginPage = location.pathname === '/login';
+  const headerClassName = isLoginPage ? '' : 'layout-header';
 
   const handleBack = () => {
     if (location.pathname === '/register') {
@@ -115,7 +119,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
       {/* Header */}
       {showHeader && (
-        <header className="layout-header">
+        <header className={headerClassName}>
           <img src={logo} alt="AI Campaign Logo" className="layout-logo" />
           <div className="layout-title-group">
             <h1 className="layout-title-line">AI Facebook</h1>

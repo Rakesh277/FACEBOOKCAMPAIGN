@@ -153,3 +153,8 @@ top: 50%;
 transform: translateY(-50%);
 color: #6b7280;
 }
+button {
+  display: inline-block;
+  visibility: visible;
+  opacity: 1;
+}

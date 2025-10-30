@@ -25,6 +25,7 @@ const CreateCampaign: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [aiGeneratedPost, setAiGeneratedPost] = useState<string | null>(null);
   const [isPostConfirmed, setIsPostConfirmed] = useState(false);
+  const [selectedOption, setSelectedOption] = useState('');
 
   // --- Fetch User's Facebook Pages on Component Mount ---
   useEffect(() => {
@@ -281,35 +282,7 @@ const CreateCampaign: React.FC = () => {
               <option value="video">Video</option>
             </select>
           </div>
-
-          {/* AI Post & Image Generation Section */}
-          <div className="form-group">
-             <button
-                 type="button"
-                 onClick={handleGeneratePost}
-                 disabled={isLoading || !formData.caption || !formData.adType}
-                 className="ai-generate-button"
-             >
-                 {isLoading ? "Generating..." : "Generate Full Post"}
-             </button>
-
-             {aiGeneratedPost && !isPostConfirmed && (
-                 <div className="ai-post-preview">
-                     <label>Suggested Post</label>
-                     <p className="ai-post-text">{aiGeneratedPost}</p>
-                     <button type="button" onClick={() => { setFormData(prev => ({ ...prev, caption: aiGeneratedPost })); setIsPostConfirmed(true); }} className="confirm-button">
-                         Confirm Post ✅
-                     </button>
-                     <button type="button" onClick={handleGeneratePost} disabled={isLoading} className="refresh-button">
-                         {isLoading ? "Refreshing..." : "Try Another 🔄"}
-                     </button>
-                 </div>
-             )}
-          </div>
-
           
-
-
           {/* Budget & Duration */}
           <div className="form-row">
             <div className="form-group form-row-item">

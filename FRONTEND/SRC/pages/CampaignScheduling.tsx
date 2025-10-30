@@ -17,13 +17,15 @@ const CampaignScheduling: React.FC = () => {
   const [formData, setFormData] = useState({
     campaignName: "",
     postDate: "",
-    postTime: "",
     timezone: "",
     frequency: "",
   });
 
   const [scheduledCampaigns, setScheduledCampaigns] = useState<ScheduledCampaign[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const [selectedHour, setSelectedHour] = useState("1");
+  const [selectedMinute, setSelectedMinute] = useState("00");
+  const [selectedPeriod, setSelectedPeriod] = useState("AM");
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -32,14 +34,19 @@ const CampaignScheduling: React.FC = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const convertTo24Hour = (hour: string, minute: string, period: string) => {
+    const h = parseInt(hour);
+    const m = minute.padStart(2, "0");
+    if (period === "AM") return h === 12 ? `00:${m}` : `${h.toString().padStart(2, "0")}:${m}`;
+    return h === 12 ? `12:${m}` : `${(h + 12).toString().padStart(2, "0")}:${m}`;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Basic validation
     if (
       !formData.campaignName ||
       !formData.postDate ||
-      !formData.postTime ||
       !formData.timezone ||
       !formData.frequency
     ) {
@@ -48,31 +55,36 @@ const CampaignScheduling: React.FC = () => {
     }
     setError(null);
 
+    const formattedTime = convertTo24Hour(selectedHour, selectedMinute, selectedPeriod);
+
     const newCampaign: ScheduledCampaign = {
       id: Date.now(),
       campaignName: formData.campaignName,
       postDate: formData.postDate,
-      postTime: formData.postTime,
+      postTime: `${selectedHour}:${selectedMinute} ${selectedPeriod}`, // display format
       timezone: formData.timezone,
       frequency: formData.frequency,
       status: "Scheduled",
     };
 
     try {
-      // Send scheduled campaign details to backend API
-      await axios.post("http://localhost:5000/api/facebook/schedule", newCampaign);
+      await axios.post("http://localhost:5000/api/facebook/schedule", {
+        ...newCampaign,
+        postTime: formattedTime, // send 24-hour format to backend
+      });
 
       setScheduledCampaigns((prev) => [...prev, newCampaign]);
       console.log("🕒 Scheduled Campaign:", newCampaign);
 
-      // Reset form inputs
       setFormData({
         campaignName: "",
         postDate: "",
-        postTime: "",
         timezone: "",
         frequency: "",
       });
+      setSelectedHour("1");
+      setSelectedMinute("00");
+      setSelectedPeriod("AM");
     } catch (error) {
       setError("Failed to schedule campaign, please try again.");
     }
@@ -100,6 +112,7 @@ const CampaignScheduling: React.FC = () => {
               />
             </div>
           </div>
+
           <div className="form-row">
             <div className="form-group form-row-item">
               <label htmlFor="postDate">Post Date</label>
@@ -112,18 +125,36 @@ const CampaignScheduling: React.FC = () => {
                 className="create-campaign-input"
               />
             </div>
+
             <div className="form-group form-row-item">
-              <label htmlFor="postTime">Post Time</label>
-              <input
-                type="time"
-                id="postTime"
-                name="postTime"
-                value={formData.postTime}
-                onChange={handleChange}
-                className="create-campaign-input"
-              />
+              <label>Post Time</label>
+              <div className="time-input-group">
+                <select value={selectedHour} onChange={(e) => setSelectedHour(e.target.value)}
+                  aria-label="Select hour">
+                  {Array.from({ length: 12 }, (_, i) => {
+                    const hour = i + 1;
+                    return <option key={hour} value={hour}>{hour}</option>;
+                  })}
+                </select>
+
+                <span>:</span>
+
+                <select value={selectedMinute} onChange={(e) => setSelectedMinute(e.target.value)}
+                  aria-label="Select minute">
+                  {["00", "15", "30", "45"].map((min) => (
+                    <option key={min} value={min}>{min}</option>
+                  ))}
+                </select>
+
+                <select value={selectedPeriod} onChange={(e) => setSelectedPeriod(e.target.value)}
+                  aria-label="Select AM or PM">
+                  <option value="AM">AM</option>
+                  <option value="PM">PM</option>
+                </select>
+              </div>
             </div>
           </div>
+
           <div className="form-row">
             <div className="form-group form-row-item">
               <label htmlFor="timezone">Timezone</label>
@@ -142,6 +173,7 @@ const CampaignScheduling: React.FC = () => {
                 <option value="CET">CET (UTC +1)</option>
               </select>
             </div>
+
             <div className="form-group form-row-item">
               <label htmlFor="frequency">Frequency</label>
               <select
@@ -158,6 +190,7 @@ const CampaignScheduling: React.FC = () => {
               </select>
             </div>
           </div>
+
           <div className="submit-container">
             <button type="submit" className="create-campaign-submit">
               Schedule Campaign
@@ -165,7 +198,6 @@ const CampaignScheduling: React.FC = () => {
           </div>
         </form>
 
-        {/* Scheduled Campaigns Table */}
         <div className="scheduled-campaigns-table">
           <h3 className="sub-title">📅 Scheduled Campaigns</h3>
           {scheduledCampaigns.length === 0 ? (

@@ -1,133 +1,124 @@
+/* Login.css */
 
-.login-form {
-  width: 100%;
-  max-width: 300px;
-  background-color: rgba(143, 53, 185, 0.95);
-  padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0 0 16px rgba(0, 0, 0, 0.5);
+.login-container {
   display: flex;
-  flex-direction: column ;
-  gap: 20px;
-  color: #ffffff;
+  height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to right, #040e18, #ffffff);
 }
 
-.login-form h2 {
+/* Left branding section */
+.left-section {
+  flex: 1;
+  background-color:  #ffffff;
+  color: #1a1881;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.layout-logo {
+  width: 120px;
+  margin-bottom: 30rem;
+}
+
+.layout-title-group {
+  text-align: left;
+  margin-top: -20rem;
+}
+
+.title-line {
+  font-size: 2rem;
+  margin: 0.3rem 0;
+}
+
+.highlight {
+  color: #00adb5;
+  font-weight: bold;
+}
+
+/* Right login form section */
+.right-section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.login-card {
+  background-color: #961de7;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-card h2 {
+  margin-bottom: 1.5rem;
+  color: #333;
   text-align: center;
-  margin-bottom: 20px;
-  color: #ffffff;
 }
 
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 1rem;
 }
 
 .form-group label {
   display: block;
-  margin-bottom: 6px;
-  font-weight: 600;
-  color: #ffffff;
+  margin-bottom: 0.5rem;
+  color: #555;
 }
 
 .form-group input {
   width: 100%;
-  padding: 10px;
-  border: 1px solid #aaa;
-  border-radius: 5px;
-  font-size: 14px;
-  box-sizing: border-box;
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
 }
 
-/* Make button same width & size as input fields */
 button[type="submit"] {
   width: 100%;
-  padding: 10px;
-  background-color: #007bff;
+  padding: 0.75rem;
+  background-color: #00adb5;
   color: white;
-  font-weight: bold;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
+  font-size: 1rem;
   cursor: pointer;
-  margin-top: 5px;
-  font-size: 14px;
+  transition: background-color 0.3s ease;
 }
 
 button[type="submit"]:hover {
-  background-color: #0056b3;
+  background-color: #007d85;
 }
 
-/* Error message styling */
+button[disabled] {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
 .error-message {
-  color: rgb(255, 255, 255);
+  color: #e74c3c;
+  margin-top: 1rem;
   text-align: center;
-  margin-top: 10px;
 }
 
-/* Register link color changed to white */
 .register-link {
+  margin-top: 1.5rem;
   text-align: center;
-  margin-top: 15px;
-  font-size: 14px;
-  color: white;
+  font-size: 0.9rem;
 }
 
 .register-link a {
-  color: white;
-  text-decoration: underline;
+  color: #00adb5;
+  text-decoration: none;
 }
 
 .register-link a:hover {
-  color: #007bff; /* blue on hover */
-}
-.forgot-password {
-  text-align: right;
-  margin-top: 5px;
-}
-
-.forgot-password a {
-  color: #ffffff;
-  font-size: 13px;
   text-decoration: underline;
-}
-
-.social-login {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 20px;
-}
-
-.google-login,
-.facebook-login {
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  font-weight: bold;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-.google-login {
-  background-color: #db4437;
-  color: white;
-}
-
-.facebook-login {
-  background-color: #4267B2;
-  color: white;
-}
-/* Full page background and layout */
-.login-page {
-  height: 80vh;
-  background-color: #ff69b4; /* bright pink or any color you like */
-  display: flex;
-  justify-content: flex-end; /* pushes content to the right */
-  align-items: center;
-  padding-right: 20%; /* spacing from the right edge */
-}
-
-/* Wrapper to control form alignment */
-.login-form-wrapper {
-  max-width: 400px;
-  width: 100%;
 }
